@@ -15,6 +15,8 @@ const connect = () => {
     })
     .on('data', async function (transaction) {
       log.info('Received a pending transaction', transaction)
+      const transactionInfo = await web3.eth.getTransaction(transaction)
+      log.info('Transaction Info', transactionInfo)
     })
 }
 
