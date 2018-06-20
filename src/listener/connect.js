@@ -1,12 +1,8 @@
 const log = require('../log')(__filename)
+const Web3 = require('web3')
 
-//const INFURA_WS = 'wss://mainnet.infura.io/_ws'
-const GANACHE = 'ws://127.0.0.1:7545'
-
-var Web3 = require('web3')
-var web3 = new Web3(GANACHE)
-
-const connect = () => {
+const connect = (address) => {
+  const web3 = new Web3(address)
   web3.eth.subscribe('pendingTransactions',
     function (error, result) {
       if (error) {
@@ -17,6 +13,9 @@ const connect = () => {
       log.info('Received a pending transaction', transaction)
       const transactionInfo = await web3.eth.getTransaction(transaction)
       log.info('Transaction Info', transactionInfo)
+    })
+    .on('error', async function (error) {
+      log.warn('Subscription errored', error)
     })
 }
 

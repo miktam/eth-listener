@@ -25,5 +25,11 @@
   "devDependencies": {
     "mocha": "^5.2.0",
     "standard": "^11.0.1"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "it"
+    ]
   }
 }
