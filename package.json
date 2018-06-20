@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "DEBUG=eth-listener:* node ./bin/www",
-    "test": "node_modules/.bin/mocha --recursive",
+    "test": "node_modules/.bin/mocha --recursive --exit",
     "lint": "standard",
     "standard": "standard",
     "standard:fix": "standard --fix",
