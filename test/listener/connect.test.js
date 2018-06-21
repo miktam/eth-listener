@@ -1,5 +1,5 @@
 
-const connect = require('../../src/listener/connect')
+const connect = require('../../src/listener/listen-for-pending-transactions')
 const listenForLogs = require('../../src/listener/listen-for-events')
 const c = require('../../src/constants')
 
