@@ -1,20 +1,16 @@
 const log = require('../log')(__filename)
-const c = require('../constants')
 const Web3 = require('web3')
 
-const connect = (address) => {
-  var web3 = new Web3(address)
+const connect = (nodeAddress, contractAddress) => {
+  var web3 = new Web3(nodeAddress)
   web3.eth.subscribe('logs', {
-    address: c.DEPOSIT_ADDRESS,
-    topics: [
-      '0x000000000000000000000000267be1c1d684f78cb4f6a176c4911b741e4ffdc0'
-    ]
+    address: contractAddress
   },
   function (error, result) {
     if (error) {
       log.error('Could not connect', error)
     } else {
-      log.info('update about logs?')
+      log.info('web3.eth.subscribe(logs) returns', result)
     }
   })
     .on('data', async function (logs) {
